@@ -26,7 +26,7 @@
   
     {% if product.tags contains 'custom_field' and enable_custom_field %}
       <label for="custom_input">Custom Input:</label>
-      <input type="text" name="custom_field" id="custom_input" required>
+      <input type="text" name="properties[Custom Input]" id="custom_input" required>
     {% endif %}
 
     <select name="id">
