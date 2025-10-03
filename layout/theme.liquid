@@ -19,5 +19,7 @@
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
+
+    {{ 'cart-checkbox.js' | asset_url | script_tag }}
   </body>
 </html>
