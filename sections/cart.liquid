@@ -34,6 +34,17 @@
   </table>
 
   <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
+  
+
+  <div>
+    <input type="checkbox" id="i_agree_checkbox">
+    <label for="i_agree_checkbox">I Agree to the terms and conditions</label>
+  </div>
+
+  <!-- hidden để lưu cart attribute -->
+  <input type="hidden" name="attributes[I Agree]" id="i_agree_hidden" value="false">
+
+  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}" id="checkout_button">
 </form>
 
 {% schema %}
