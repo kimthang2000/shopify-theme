@@ -22,9 +22,13 @@
   {% form 'product', product %}
     {% assign current_variant = product.selected_or_first_available_variant %}
 
-    <label for="custom_input">Custom Input:</label>
-    <input type="text" name="properties[Custom Input]" id="custom_input" required>
-    
+    {% assign enable_custom_field = product.metafields.custom.enable_custom_field %}
+  
+    {% if product.tags contains 'custom_field' and enable_custom_field %}
+      <label for="custom_input">Custom Input:</label>
+      <input type="text" name="properties[Custom Input]" id="custom_input" required>
+    {% endif %}
+
     <select name="id">
       {% for variant in product.variants %}
         <option
