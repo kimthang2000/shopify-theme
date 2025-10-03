@@ -17,13 +17,11 @@
         <td>
           <p>{{ item.product.title }}</p>
 
-          {% if item.properties.size > 0 %}
-            {% for p in item.properties %}
-              {% unless p.first == "_key" %}
-                <p>{{ p.first }}: {{ p.last }}</p>
-              {% endunless %}
-            {% endfor %}
-          {% endif %}
+         {% for item in cart.items %}
+  {% for p in item.properties %}
+    {{ p.first }}: {{ p.last }}
+  {% endfor %}
+{% endfor %}
 
           {{ 'cart.remove' | t | link_to: item.url_to_remove }}
         </td>
