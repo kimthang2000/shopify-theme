@@ -21,31 +21,6 @@
         <p>{{ faq_items.answer.value }}</p>
       </div>
     {% endif %}
-
-    <div class="faq-items">
-      {% if faq_items.size > 0 %}
-        {% for faq in faq_items %}
-          <div class="faq-item">
-            <h4 class="faq-question">
-              {% if faq.settings %}
-                {{ faq.settings.question }}
-              {% else %}
-                {{ faq.question }}
-              {% endif %}
-            </h4>
-            <div class="faq-answer">
-              {% if faq.settings %}
-                {{ faq.settings.answer }}
-              {% else %}
-                {{ faq.answer }}
-              {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      {% else %}
-        <p>Chưa có câu hỏi nào.</p>
-      {% endif %}
-    </div>
   </div>
 </section>
 
