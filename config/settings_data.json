@@ -8,5 +8,8 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "gift_product": "new-product-1",
+    "content_for_index": []
+  }
 }
