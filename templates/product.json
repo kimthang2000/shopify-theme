@@ -12,9 +12,18 @@
     "main": {
       "type": "product",
       "settings": {}
+    },
+    "faq_section_Dg4Dqk": {
+      "type": "faq-section",
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Câu hỏi thường gặp",
+        "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
+      }
     }
   },
   "order": [
+    "faq_section_Dg4Dqk",
     "main"
   ]
 }
