@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log('theme', window.theme);
+
+    return;
+
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
   const giftProductId = window.theme.settings.gift_product.id;
 
