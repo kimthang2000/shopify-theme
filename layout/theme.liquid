@@ -21,6 +21,17 @@
     {% sections 'footer-group' %}
 
     {{ 'cart.js' | asset_url | script_tag }}
-    {{ 'gift-cart' | asset_url | script_tag }}
+    {{ 'gift-cart.js' | asset_url | script_tag }}
   </body>
+
+  <script>
+  window.theme = {
+    settings: {
+      cart_threshold_amount: {{ settings.cart_threshold_amount | default: 0 }},
+      gift_product: {
+        id: {{ settings.gift_product.id | default: 0 }}
+      }
+    }
+  };
+</script>
 </html>
