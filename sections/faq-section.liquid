@@ -16,7 +16,24 @@
     {% endif %}
 
     <div>
-      {{ faq_items.size  }}
+      {% for faq in faq_items %}
+          <div class="faq-item">
+            <h4 class="faq-question">
+              {% if faq.settings %}
+                {{ faq.settings.question }}
+              {% else %}
+                {{ faq.question }}
+              {% endif %}
+            </h4>
+            <div class="faq-answer">
+              {% if faq.settings %}
+                {{ faq.settings.answer }}
+              {% else %}
+                {{ faq.answer }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
     </div>
 
     <div class="faq-items">
