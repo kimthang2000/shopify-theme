@@ -9,12 +9,33 @@
  */
 {
   "sections": {
+    "faq_section_PKhDJq": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_NmmRwJ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "question 1",
+            "answer": "description 1"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_NmmRwJ"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Câu hỏi thường gặp",
+        "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
+      }
+    },
     "main": {
       "type": "hello-world",
       "settings": {}
     }
   },
   "order": [
+    "faq_section_PKhDJq",
     "main"
   ]
 }
