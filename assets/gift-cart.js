@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const total = cart.total_price / 100; // Shopify prices in cents
     const hasGift = cart.items.some(i => i.id == giftProductId);
 
+    console.log('total', total);
+    console.log('hasGift', hasGift);
+
     // if (total >= threshold && !hasGift) {
     //   fetch('/cart/add.js', {
     //     method: 'POST',
