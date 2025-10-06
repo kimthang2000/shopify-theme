@@ -79,5 +79,21 @@
         "default": 4
       }
     ]
+  },
+  {
+    "name": "Auto Gift Settings",
+    "settings": [
+      {
+        "type": "number",
+        "id": "card_threshold_amount",
+        "label": "Card Threshold Amount",
+        "default": 100
+      },
+      {
+        "type": "product",
+        "id": "gift_product",
+        "label": "Gift Product",
+      },
+    ]
   }
 ]
