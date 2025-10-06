@@ -15,12 +15,12 @@
       {% assign faq_items = product.metafields.custom.faq_list.value %}
     {% endif %}
 
-    {% if faq %}
-  <div class="faq-item">
-    <h4>{{ faq.question.value }}</h4>
-    <p>{{ faq.answer.value }}</p>
-  </div>
-{% endif %}
+    {% if faq_items %}
+      <div class="faq-item">
+        <h4>{{ faq_items.question.value }}</h4>
+        <p>{{ faq_items.answer.value }}</p>
+      </div>
+    {% endif %}
 
     <div class="faq-items">
       {% if faq_items.size > 0 %}
