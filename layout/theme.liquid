@@ -28,7 +28,7 @@
   window.theme = {
     settings: {
       cart_threshold_amount: {{ settings.cart_threshold_amount | default: 0 }},
-      id : {{ settings.gift_product.id }}
+      id : {{ settings.gift_product | json }}
     }
   };
 </script>
