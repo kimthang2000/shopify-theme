@@ -85,7 +85,7 @@
     "settings": [
       {
         "type": "number",
-        "id": "card_threshold_amount",
+        "id": "cart_threshold_amount",
         "label": "Card Threshold Amount",
         "default": 100
       },
