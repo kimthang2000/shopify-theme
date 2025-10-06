@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
   const giftProductId = window.theme.settings.gift_product.id;
 
+    console.log('threshold', threshold);
+    console.log('giftProductId', giftProductId);
+
   if (!threshold || !giftProductId) return;
 
   function updateGift(cart) {
