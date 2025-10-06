@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("settings", window.theme.settings);
+    console.log("settings", window.theme);
 
     return;
 
