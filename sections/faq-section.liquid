@@ -15,26 +15,12 @@
       {% assign faq_items = product.metafields.custom.faq_list.value %}
     {% endif %}
 
-    <div>
-      {% for faq in faq_items %}
-          <div class="faq-item">
-            <h4 class="faq-question">
-              {% if faq.settings %}
-                {{ faq.settings.question }}
-              {% else %}
-                {{ faq.question }}
-              {% endif %}
-            </h4>
-            <div class="faq-answer">
-              {% if faq.settings %}
-                {{ faq.settings.answer }}
-              {% else %}
-                {{ faq.answer }}
-              {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-    </div>
+    {% if faq %}
+  <div class="faq-item">
+    <h4>{{ faq.question.value }}</h4>
+    <p>{{ faq.answer.value }}</p>
+  </div>
+{% endif %}
 
     <div class="faq-items">
       {% if faq_items.size > 0 %}
