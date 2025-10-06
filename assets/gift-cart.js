@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('theme', window.theme);
-
-    return;
-
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
   const giftProductId = window.theme.settings.gift_product.id;
 
@@ -12,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!threshold || !giftProductId) return;
 
   function updateGift(cart) {
+    console.log('cart', cart)
     const total = cart.total_price / 100; // Shopify prices in cents
     const hasGift = cart.items.some(i => i.id == giftProductId);
 
