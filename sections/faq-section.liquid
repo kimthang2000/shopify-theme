@@ -1,0 +1,86 @@
+<section class="faq-section page-width">
+  <div class="faq-header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.description }}</p>
+  </div>
+
+  <div class="faq-list">
+    {% assign faq_items = section.blocks %}
+
+    {%- comment -%}
+      Nếu ở trang sản phẩm và có metafields thì dùng metafields thay thế
+    {%- endcomment -%}
+    {% if template.name contains 'product' and product.metafields.custom.faq_list %}
+      {% assign faq_items = product.metafields.custom.faq_list.value %}
+    {% endif %}
+
+    <div class="faq-items">
+      {% if faq_items.size > 0 %}
+        {% for faq in faq_items %}
+          <div class="faq-item">
+            <h4 class="faq-question">
+              {% if faq.settings %}
+                {{ faq.settings.question }}
+              {% else %}
+                {{ faq.question }}
+              {% endif %}
+            </h4>
+            <div class="faq-answer">
+              {% if faq.settings %}
+                {{ faq.settings.answer }}
+              {% else %}
+                {{ faq.answer }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>Chưa có câu hỏi nào.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tiêu đề",
+      "default": "Câu hỏi thường gặp"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Mô tả",
+      "default": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Câu hỏi",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Câu hỏi"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Câu trả lời"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "category": "Nội dung"
+    }
+  ]
+}
+{% endschema %}
