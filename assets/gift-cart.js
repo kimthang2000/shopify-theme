@@ -26,7 +26,7 @@ async function removeGiftFromCart(variantId) {
 async function handleGift() {
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
   const giftVariant = parseInt(window.theme.settings.id);
-
+return;
   if (!threshold || !giftVariant) return;
 
   const cart = await getCart();
