@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hasGift = cart.items.some(i => i.id == giftProductId);
 
     console.log('giftProductId', giftProductId, threshold);
-
+      return ;
      fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
