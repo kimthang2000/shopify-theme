@@ -4,10 +4,19 @@ async function getCart() {
 }
 
 async function addGiftToCart(variantId) {
+  const data = {
+    'items': [
+      {
+        'id': variantId,
+        'quantity': 1
+      }
+    ]
+  }
+
   const res = await fetch('/cart/add.js', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id: variantId, quantity: 1 })
+    body: JSON.stringify(data)
   });
 
   console.log('res', res);
