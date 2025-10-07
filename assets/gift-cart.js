@@ -4,11 +4,13 @@ async function getCart() {
 }
 
 async function addGiftToCart(variantId) {
-  await fetch('/cart/add.js', {
+  const res = await fetch('/cart/add.js', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id: variantId, quantity: 1 })
   });
+
+  console.log('res', res);
 }
 
 async function removeGiftFromCart(variantId) {
