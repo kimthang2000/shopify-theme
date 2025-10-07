@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const hasGift = cart.items.some(i => i.id == giftProductId);
 
     console.log('giftProductId', giftProductId, threshold);
+
+    return;
+     fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: giftProductId, quantity: 1 })
+      }).then(() => location.reload());
+
+
     // if (total >= threshold && !hasGift) {
     //   fetch('/cart/add.js', {
     //     method: 'POST',
