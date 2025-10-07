@@ -52,20 +52,11 @@ async function checkGiftStatus() {
   }
 }
 
-// --------- INIT ---------
-document.addEventListener('DOMContentLoaded', async () => {
-  await checkGiftStatus();
-});
-
-// --------- HANDLE AJAX UPDATES ---------
-document.addEventListener('cart:updated', async () => {
-  await checkGiftStatus();
-});
 
 
 document.addEventListener('DOMContentLoaded', function() {
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
   const giftVariant = parseInt(window.theme.settings.id);
 
-  
+
 }
