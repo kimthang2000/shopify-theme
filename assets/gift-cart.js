@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
   const giftVariant = parseInt(window.theme.settings.id);
 
+  let formData = {
+  'items': [{
+    'id': giftVariant,
+    'quantity': 1
+    }]
+  };
 
   fetch('cart/add.js', {
     method: 'POST',
