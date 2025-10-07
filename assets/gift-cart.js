@@ -1,38 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
-  const giftProductId = window.theme.settings.id;
+async function getCart() {
+  const res = await fetch('/cart.js');
+  return await res.json();
+}
 
-  if (!threshold || !giftProductId) return;
+async function addGiftToCart(variantId) {
+  await fetch('/cart/add.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: variantId, quantity: 1 })
+  });
+}
 
-  function updateGift(cart) {
-    const total = cart.total_price / 100; // Shopify prices in cents
-    const hasGift = cart.items.some(i => i.id == giftProductId);
-
-    console.log('giftProductId', giftProductId, threshold);
-      return ;
-     fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: giftProductId, quantity: 1 })
-      }).then(() => location.reload());
-
-
-    // if (total >= threshold && !hasGift) {
-    //   fetch('/cart/add.js', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ id: giftProductId, quantity: 1 })
-    //   }).then(() => location.reload());
-    // } else if (total < threshold && hasGift) {
-    //   fetch('/cart/change.js', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ id: giftProductId, quantity: 0 })
-    //   }).then(() => location.reload());
-    // }
+async function removeGiftFromCart(variantId) {
+  const cart = await getCart();
+  const item = cart.items.find(i => i.variant_id === variantId);
+  if (item) {
+    await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: item.key, quantity: 0 })
+    });
   }
+}
 
-  fetch('/cart.js')
-    .then(res => res.json())
-    .then(updateGift);
-});
+async function handleGift() {
+  const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
+  const giftVariant = parseInt(window.theme.settings.id);
+
+  if (!threshold || !giftVariant) return;
+
+  const cart = await getCart();
+  const total = cart.total_price / 100;
+  const hasGift = cart.items.some(i => i.variant_id === giftVariant);
+
+  if (total >= threshold && !hasGift) {
+    await addGiftToCart(giftVariant);
+    location.reload();
+  } else if (total < threshold && hasGift) {
+    await removeGiftFromCart(giftVariant);
+    location.reload();
+  }
+}
+
+// Run when cart is loaded
+document.addEventListener('DOMContentLoaded', handleGift);
