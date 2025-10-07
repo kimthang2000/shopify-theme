@@ -23,10 +23,9 @@ async function removeGiftFromCart(variantId) {
   }
 }
 
-async function handleGift() {
+async function checkGiftStatus() {
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
-  const giftVariant = parseInt(window.theme.settings.id);
-return;
+  const giftVariant = parseInt(window.theme.settings.gift_product_id);
   if (!threshold || !giftVariant) return;
 
   const cart = await getCart();
@@ -34,13 +33,20 @@ return;
   const hasGift = cart.items.some(i => i.variant_id === giftVariant);
 
   if (total >= threshold && !hasGift) {
+    console.log("🎁 Add gift");
     await addGiftToCart(giftVariant);
-    location.reload();
   } else if (total < threshold && hasGift) {
+    console.log("🗑️ Remove gift");
     await removeGiftFromCart(giftVariant);
-    location.reload();
   }
 }
 
-// Run when cart is loaded
-document.addEventListener('DOMContentLoaded', handleGift);
+// --------- INIT ---------
+document.addEventListener('DOMContentLoaded', async () => {
+  await checkGiftStatus();
+});
+
+// --------- HANDLE AJAX UPDATES ---------
+document.addEventListener('cart:updated', async () => {
+  await checkGiftStatus();
+});
