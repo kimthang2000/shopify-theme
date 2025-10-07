@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }]
   };
 
+  if (giftVariant)
+
   fetch('cart/add.js', {
     method: 'POST',
     headers: {
