@@ -41,8 +41,8 @@ async function checkGiftStatus() {
 
   const cart = await getCart();
   const total = cart.total_price / 100;
-  const hasGift = cart.items.some(i => i.product_id === giftVariant);
-
+  const hasGift = cart.items.some(i => i.variant_id === giftVariant);
+  console.log("cart", cart)
   if (total >= threshold && !hasGift) {
     console.log("🎁 Add gift");
     await addGiftToCart(giftVariant);
