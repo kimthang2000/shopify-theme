@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log('giftProductId', giftProductId, threshold);
 
-    return;
      fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
