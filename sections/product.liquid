@@ -19,6 +19,7 @@
 
 <div class="product-form">
   {% form 'product', product %}
+    console.log('product', product)
     {% assign current_variant = product.selected_or_first_available_variant %}
 
     {% assign enable_custom_field = product.metafields.custom.enable_custom_field %}
