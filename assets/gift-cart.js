@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: giftProductId, quantity: 1 })
+        body: JSON.stringify({ id: productId, quantity: 1 })
       });
       triggerMessageReload();
     }
