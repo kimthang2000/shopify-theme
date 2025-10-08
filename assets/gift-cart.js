@@ -1,51 +1,32 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
-  let addToCartForm = document.querySelector('form[action$="/cart/add"]');
-    console.log("addToCartForm", addToCartForm)
-  // let formData = new FormData(addToCartForm);e
+  const threshold = window.theme.settings.cart_threshold_amount;
+  const productId = window.theme.settings.id;
 
+  if (!threshold || !productId) return;
 
-  console.log("formData", formData)
+  async function fetchCart() {
+    const res = await fetch('/cart.js');
+    return res.json();
+  }
 
-  // fetch(window.Shopify.routes.root + 'cart/add.js', {
-  //   method: 'POST',
-  //   body: formData
-  // })
-  // .then(response => {
-  //   return response.json();
-  // })
-  // .catch((error) => {
-  //   console.error('Error:', error);
-  // });
+  async function updateGift(cart) {
+    const subtotal = cart.items_subtotal_price / 100;
 
+    if (subtotal >= threshold) {
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: productId, quantity: 1 })
+      });
+      triggerMessageReload();
+    }
+  }
 
-  // const threshold = window.theme.settings.cart_threshold_amount;
-  // const productId = window.theme.settings.id;
+  function triggerMessageReload() {
+    document.dispatchEvent(new CustomEvent('gift-updated'));
+  }
 
-  // if (!threshold || !productId) return;
-
-  // async function fetchCart() {
-  //   const res = await fetch('/cart.js');
-  //   return res.json();
-  // }
-
-  // async function updateGift(cart) {
-  //   const subtotal = cart.items_subtotal_price / 100;
-
-  //   if (subtotal >= threshold) {
-  //     await fetch('/cart/add.js', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ id: productId, quantity: 1 })
-  //     });
-  //     triggerMessageReload();
-  //   }
-  // }
-
-  // function triggerMessageReload() {
-  //   document.dispatchEvent(new CustomEvent('gift-updated'));
-  // }
-
-  // const cart = await fetchCart();
-  // updateGift(cart);
+  const cart = await fetchCart();
+  updateGift(cart);
 });
