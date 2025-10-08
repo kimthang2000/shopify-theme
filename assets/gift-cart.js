@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         body: JSON.stringify({ id: variantId, quantity: 1 })
       });
      
-      if (res.status === 200) {
-        window.location.reload();
-      }
+      // if (res.status === 200) {
+      //   window.location.reload();
+      // }
     }
   }
 
