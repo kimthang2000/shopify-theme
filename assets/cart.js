@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
   const IAgreecheckbox = document.getElementById('i_agree_checkbox');
-  const checkoutButton = document.getElementById('submit_checkout_button');
+  const submitCheckout = document.getElementById('submit_checkout_button');
 
-  checkoutButton.disabled = true;
+  submitCheckout.disabled = true;
 
   IAgreecheckbox.addEventListener('change', function() {
-    checkoutButton.disabled = !this.checked;
+    submitCheckout.disabled = !this.checked;
   });
 });
