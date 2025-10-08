@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const threshold = parseFloat(window.theme.settings.cart_threshold_amount);
-  const giftVariant = parseInt(window.theme.settings.id);
+  const productId = parseInt(window.theme.settings.id);
 
   let formData = {
   'items': [{
@@ -19,3 +19,45 @@ document.addEventListener('DOMContentLoaded', function() {
     body: JSON.stringify(formData)
   })
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const threshold = window.theme.settings.cart_threshold_amount;
+  const productId = window.theme.settings.gift_product.id;
+
+  if (!threshold || !giftProductId) return;
+
+  async function fetchCart() {
+    const res = await fetch('/cart.js');
+    return res.json();
+  }
+
+  async function updateGift(cart) {
+    const subtotal = cart.items_subtotal_price / 100;
+    const giftInCart = cart.items.find(i => i.id === giftProductId);
+
+    if (subtotal >= threshold && !giftInCart) {
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: giftProductId, quantity: 1 })
+      });
+      triggerMessageReload();
+    }
+
+    if (subtotal < threshold && giftInCart) {
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: giftProductId, quantity: 0 })
+      });
+      triggerMessageReload();
+    }
+  }
+
+  function triggerMessageReload() {
+    document.dispatchEvent(new CustomEvent('gift-updated'));
+  }
+
+  const cart = await fetchCart();
+  updateGift(cart);
+});
