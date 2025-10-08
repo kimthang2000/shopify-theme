@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function updateGift(cart) {
     const subtotal = cart.items_subtotal_price / 100;
-    if (subtotal >= threshold) {
+    const hasGift = cart.items.some(item => item.id === variantId);
+
+
+    if (subtotal >= threshold && !hasGift) {
       const res = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
