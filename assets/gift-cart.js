@@ -17,12 +17,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function updateGift(cart) {
     const subtotal = cart.items_subtotal_price / 100;
     if (subtotal >= threshold) {
-      await fetch('/cart/add.js', {
+      const res = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: variant, quantity: 1 })
       });
-      reload();
+     
+      console.log('res', res);
     }
   }
 
