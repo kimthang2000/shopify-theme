@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   let addToCartForm = document.querySelector('form[action$="/cart/add"]');
   let formData = new FormData(addToCartForm);
 
+  console.log("addToCartForm", addToCartForm)
+  console.log("formData", formData)
+
   fetch(window.Shopify.routes.root + 'cart/add.js', {
     method: 'POST',
     body: formData
