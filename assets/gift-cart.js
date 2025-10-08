@@ -1,13 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
-  const variant = window.theme.settings.id;
+  const variantId = window.theme.settings.id;
 
-  if (!threshold || !variant) return;
+  if (!threshold || !variantId) return;
 
-  console.log("productId", variant)
-
-  // return;
 
   async function fetchCart() {
     const res = await fetch('/cart.js');
@@ -20,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const res = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: variant, quantity: 1 })
+        body: JSON.stringify({ id: variantId, quantity: 1 })
       });
      
       if (res.status === 200) {
