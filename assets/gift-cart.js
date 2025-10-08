@@ -1,21 +1,22 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   let addToCartForm = document.querySelector('form[action$="/cart/add"]');
+    console.log("addToCartForm", addToCartForm)
   let formData = new FormData(addToCartForm);
 
-  console.log("addToCartForm", addToCartForm)
+
   console.log("formData", formData)
 
-  fetch(window.Shopify.routes.root + 'cart/add.js', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
-    return response.json();
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+  // fetch(window.Shopify.routes.root + 'cart/add.js', {
+  //   method: 'POST',
+  //   body: formData
+  // })
+  // .then(response => {
+  //   return response.json();
+  // })
+  // .catch((error) => {
+  //   console.error('Error:', error);
+  // });
 
 
   // const threshold = window.theme.settings.cart_threshold_amount;
