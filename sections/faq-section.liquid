@@ -2,15 +2,15 @@
   <!-- Header -->
   <div class="faq-header">
     <h2>
-      {% if template.name contains 'product' and product.metafields.custom.faq_title %}
-        {{ product.metafields.custom.faq_title.value }}
+      {% if template.name contains 'product' and product.metafields.custom.title %}
+        {{ product.metafields.custom.title.value }}
       {% else %}
         {{ section.settings.title }}
       {% endif %}
     </h2>
     <p>
-      {% if template.name contains 'product' and product.metafields.custom.faq_description %}
-        {{ product.metafields.custom.faq_description.value }}
+      {% if template.name contains 'product' and product.metafields.custom.description %}
+        {{ product.metafields.custom.description.value }}
       {% else %}
         {{ section.settings.description }}
       {% endif %}
