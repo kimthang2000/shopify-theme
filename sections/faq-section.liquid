@@ -29,6 +29,9 @@
 {
   "name": "FAQ Section",
   // Tag -> wrapped -> default div
+  // Class -> add class
+  // Limit -> giới hạn use section
+  // 
   "settings": [
     {
       "type": "text",
@@ -43,29 +46,5 @@
       "default": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
     }
   ],
-  "blocks": [
-    {
-      "type": "faq_item",
-      "name": "Câu hỏi",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Câu hỏi"
-        },
-        {
-          "type": "textarea",
-          "id": "answer",
-          "label": "Câu trả lời"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "FAQ Section",
-      "category": "Nội dung"
-    }
-  ]
 }
 {% endschema %}
