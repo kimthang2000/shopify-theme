@@ -22,12 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: variant, quantity: 1 })
       });
-      triggerMessageReload();
+      reload();
     }
-  }
-
-  function triggerMessageReload() {
-    document.dispatchEvent(new CustomEvent('gift-updated'));
   }
 
   const cart = await fetchCart();
