@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const res = await fetch('/customer/privacy/location.json');
-    console('res', res)
+    console.log('res', res)
     const data = await res.json();
 
     if (data.state === 'OR' && data.country === 'US') {
