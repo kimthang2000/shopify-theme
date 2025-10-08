@@ -4,9 +4,11 @@
     <p>{{ section.settings.description }}</p>
   </div>
 
-    <script>
-      console.log(section);
-    </script>
+   <script>
+    // Chuyển section sang JSON
+    var sectionData = {{ section | json }};
+    console.log(sectionData);
+  </script>
 
   <div class="faq-list">
     {% assign faq_items = section.blocks %}
