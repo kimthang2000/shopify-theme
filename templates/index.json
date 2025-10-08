@@ -11,6 +11,18 @@
   "sections": {
     "faq_section_PKhDJq": {
       "type": "faq-section",
+      "blocks": {
+        "faq_item_JQ4aQg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "cau hoi 1",
+            "answer": "cau tra loi 1"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_JQ4aQg"
+      ],
       "name": "FAQ Section",
       "settings": {
         "title": "Câu hỏi",
