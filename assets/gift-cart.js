@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         body: JSON.stringify({ id: variant, quantity: 1 })
       });
      
-      console.log('res', res);
+      if (res.status === 200) {
+        window.location.reload();
+      }
     }
   }
 
