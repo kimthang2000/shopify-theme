@@ -4,16 +4,16 @@
     <p>{{ section.settings.description }}</p>
   </div>
 
-   
+   <script>
+    // Chuyển section sang JSON
+    var sectionData = {{ section.blocks | json }};
+    console.log(sectionData);
+  </script>
 
   <div class="faq-list">
     {% assign faq_items = section.blocks %}
     
-    <script>
-    // Chuyển section sang JSON
-    let faq_items = {{section.blocks}}
-    console.log(faq_items);
-  </script>
+
     {%- comment -%}
       Nếu ở trang sản phẩm và có metafields thì dùng metafields thay thế
     {%- endcomment -%}
