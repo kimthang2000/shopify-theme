@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
-  const productId = window.theme.settings.gift_product.id;
+  const productId = window.theme.settings.id;
 
   if (!threshold || !giftProductId) return;
 
@@ -33,22 +33,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function updateGift(cart) {
     const subtotal = cart.items_subtotal_price / 100;
-    const giftInCart = cart.items.find(i => i.id === giftProductId);
 
-    if (subtotal >= threshold && !giftInCart) {
+    if (subtotal >= threshold) {
       await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: giftProductId, quantity: 1 })
-      });
-      triggerMessageReload();
-    }
-
-    if (subtotal < threshold && giftInCart) {
-      await fetch('/cart/change.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: giftProductId, quantity: 0 })
       });
       triggerMessageReload();
     }
