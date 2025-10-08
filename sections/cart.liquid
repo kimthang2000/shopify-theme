@@ -20,7 +20,7 @@
         <td>
           <p>{{ item.product.title }}</p>
 
-          {% if item.properties != null %}
+          {% if item.properties != blank %}
               Custom Value: {{ item.properties['custom_input'] }}
           {% endif %}
 
