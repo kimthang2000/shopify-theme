@@ -1,74 +1,48 @@
-<section class="faq-section page-width">
+<section class="faq-section">
+  <!-- Header -->
   <div class="faq-header">
-    <h2>{{ section.settings.title }}</h2>
-    <p>{{ section.settings.description }}</p>
+    <h2>
+      {% if template.name contains 'product' and product.metafields.custom.faq_title %}
+        {{ product.metafields.custom.faq_title.value }}
+      {% else %}
+        {{ section.settings.title }}
+      {% endif %}
+    </h2>
+    <p>
+      {% if template.name contains 'product' and product.metafields.custom.faq_description %}
+        {{ product.metafields.custom.faq_description.value }}
+      {% else %}
+        {{ section.settings.description }}
+      {% endif %}
+    </p>
   </div>
 
-   <script>
-    // Chuyển section sang JSON
-    var sectionData = {{ section.blocks | json }};
-    console.log(sectionData);
-  </script>
-
+  <!-- FAQ List -->
   <div class="faq-list">
     {% assign faq_items = section.blocks %}
-    
 
-    {%- comment -%}
-      Nếu ở trang sản phẩm và có metafields thì dùng metafields thay thế
-    {%- endcomment -%}
     {% if template.name contains 'product' and product.metafields.custom.faq_list %}
       {% assign faq_items = product.metafields.custom.faq_list.value %}
     {% endif %}
 
     {% if faq_items %}
-      <div class="faq-item">
-        <h4>{{ faq_items.question.value }}</h4>
-        <p>{{ faq_items.answer.value }}</p>
-      </div>
+      {% for faq in faq_items %}
+        <div class="faq-item">
+          <h4>
+            {% if faq.question %}{{ faq.question.value }}{% else %}{{ faq.settings.question }}{% endif %}
+          </h4>
+          <p>
+            {% if faq.answer %}{{ faq.answer.value }}{% else %}{{ faq.settings.answer }}{% endif %}
+          </p>
+        </div>
+      {% endfor %}
     {% endif %}
-
   </div>
 </section>
 
-{% schema %}
-{
-  "name": "FAQ Section",
-  // Tag -> wrapped -> default div
-  // Class -> add class
-  // Limit -> giới hạn use section
-  // 
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Tiêu đề",
-      "default": "Câu hỏi"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Mô tả",
-      "default": "Câu trả lơì."
-    }
-  ],
-   "blocks": [
-    {
-      "type": "faq_item",
-      "name": "Câu hỏi",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Câu hỏi"
-        },
-        {
-          "type": "textarea",
-          "id": "answer",
-          "label": "Câu trả lời"
-        }
-      ]
-    }
-  ],
-}
-{% endschema %}
+<!-- Optional: debug -->
+<script>
+  {% if section.settings %}
+    console.log('Section settings:', {{ section.settings | json }});
+  {% endif %}
+</script>
