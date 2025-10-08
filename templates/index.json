@@ -12,7 +12,7 @@
     "faq_section_PKhDJq": {
       "type": "faq-section",
       "blocks": {
-        "faq_item_JQ4aQg": {
+        "faq_item_khPTPG": {
           "type": "faq_item",
           "settings": {
             "question": "cau hoi 1",
@@ -21,12 +21,13 @@
         }
       },
       "block_order": [
-        "faq_item_JQ4aQg"
+        "faq_item_khPTPG"
       ],
+      "custom_css": [],
       "name": "FAQ Section",
       "settings": {
-        "title": "Câu hỏi",
-        "description": "Câu trả lời"
+        "title": "Câu hỏi thường gặp",
+        "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
       }
     },
     "main": {
