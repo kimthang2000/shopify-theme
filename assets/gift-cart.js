@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
      
       if (res.status === 200) {
         window.location.reload();
+        await reloadRandomMessage()
       }
     }
   }
