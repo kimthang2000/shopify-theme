@@ -20,7 +20,7 @@
 <div class="product-form">
   {% form 'product', product %}
     <script>
-      console.log({{ product | json }});
+      console.log({{ product.selected_or_first_available_variant | json }});
     </script>
     {% assign current_variant = product.selected_or_first_available_variant %}
 
