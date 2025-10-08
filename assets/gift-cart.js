@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const subtotal = cart.items_subtotal_price / 100;
     const hasGift = cart.items.some(item => item.id === variantId);
 
-    console.log('cart', cart)
-
     if (subtotal >= threshold && !hasGift) {
       const res = await fetch('/cart/add.js', {
         method: 'POST',
