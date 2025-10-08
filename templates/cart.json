@@ -12,9 +12,14 @@
     "main": {
       "type": "cart",
       "settings": {}
+    },
+    "random-message": {
+      "type": "random-message",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "random-message"
   ]
 }
