@@ -43,7 +43,7 @@
 <!-- Optional: debug -->
 <script>
   {% if section.settings %}
-    console.log('Section settings:', {{ section.settings | json }});
+    console.log('Section settings:', {{ section.blocks | json }});
   {% endif %}
 </script>
 {% schema %}
