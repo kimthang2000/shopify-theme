@@ -9,10 +9,9 @@
 
 <form action="{{ routes.cart_url }}" method="post">
   <table>
-    {% comment %} {% comment %} <script>
-      console.log({{ product.enable_custom_field | json }});
-    </script> {% endcomment %} {% endcomment %}
-
+    <script>
+      console.log({{ cart.items | json }});
+    </script>
     {% for item in cart.items %}
       <tr>
         <td>
