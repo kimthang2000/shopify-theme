@@ -18,10 +18,18 @@
             "question": "cau hoi 1",
             "answer": "cau tra loi 1"
           }
+        },
+        "faq_item_wG73RM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Cau hoi 2",
+            "answer": "cau tra loi 2"
+          }
         }
       },
       "block_order": [
-        "faq_item_khPTPG"
+        "faq_item_khPTPG",
+        "faq_item_wG73RM"
       ],
       "custom_css": [],
       "name": "FAQ Section",
