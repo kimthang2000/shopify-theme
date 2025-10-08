@@ -20,11 +20,9 @@
         <td>
           <p>{{ item.product.title }}</p>
 
-          {% for item in cart.items %}
-            {% for p in item.properties %}
-              {{ p.first }}: {{ p.last }}
-            {% endfor %}
-          {% endfor %}
+          {% if item.properties != null %}
+              Custom Value: {{ item.properties['custom_input'] }}
+          {% endif %}
 
           {{ 'cart.remove' | t | link_to: item.url_to_remove }}
         </td>
