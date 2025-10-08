@@ -53,3 +53,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Cart update error:', err);
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/customer/privacy/location.json');
+    console('res', res)
+    const data = await res.json();
+
+    if (data.state === 'OR' && data.country === 'US') {
+      // Tạo popup
+      const popup = document.createElement('div');
+      popup.id = 'oregon-popup';
+      popup.style.position = 'fixed';
+      popup.style.top = '0';
+      popup.style.left = '0';
+      popup.style.width = '100%';
+      popup.style.height = '100%';
+      popup.style.background = 'rgba(0,0,0,0.5)';
+      popup.style.display = 'flex';
+      popup.style.alignItems = 'center';
+      popup.style.justifyContent = 'center';
+      popup.style.zIndex = '9999';
+
+      popup.innerHTML = `
+        <div style="background:white; padding:20px; border-radius:8px; text-align:center;">
+          <p>Welcome Oregon customer!</p>
+          <button id="close-popup">Close</button>
+        </div>
+      `;
+
+      document.body.appendChild(popup);
+
+      document.getElementById('close-popup').addEventListener('click', () => {
+        popup.remove();
+      });
+    }
+  } catch (err) {
+    console.error('Failed to fetch customer location:', err);
+  }
+});
+
