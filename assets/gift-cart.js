@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-
   async function fetchCart() {
     const res = await fetch('/cart.js');
     return res.json();
