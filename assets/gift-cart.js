@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const subtotal = cart.items_subtotal_price / 100;
     const hasGift = cart.items.some(item => item.id === variantId);
 
+    console.log('cart', cart)
 
     if (subtotal >= threshold && !hasGift) {
       const res = await fetch('/cart/add.js', {
@@ -23,9 +24,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         body: JSON.stringify({ id: variantId, quantity: 1 })
       });
      
-      // if (res.status === 200) {
-      //   window.location.reload();
-      // }
+      if (res.status === 200) {
+        window.location.reload();
+      }
     }
   }
 
