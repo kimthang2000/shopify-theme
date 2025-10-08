@@ -1,0 +1,6 @@
+{% assign messages = "You're awesome!|A gift just for you!|Enjoy your freebie!|Lucky day!|Bonus unlocked!" | split: "|" %}
+{% assign random_index = 'now' | date: '%s' | modulo: messages.size %}
+
+<div id="RandomMessageSection" class="text-center my-4 p-4 bg-gray-50 rounded-lg">
+  <p class="text-lg font-semibold">{{ messages[random_index] }}</p>
+</div>
