@@ -1,28 +1,31 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
   const variantId = window.theme.settings.id;
-
   if (!threshold || !variantId) return;
 
   async function reloadRandomMessage() {
-    const res = await fetch(window.location.pathname + '?section_id=random-message');
-    const html = await res.text();
+    try {
+      const res = await fetch(window.location.pathname + '?section_id=random-message');
+      if (!res.ok) return;
+      const html = await res.text();
 
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
 
-    const newSection = tempDiv.querySelector('#RandomMessageSection');
-    const currentSection = document.querySelector('#RandomMessageSection');
-
-    if (newSection && currentSection) {
-      currentSection.replaceWith(newSection);
-      console.log('✨ Random message updated!');
+      const newSection = tempDiv.querySelector('#RandomMessageSection');
+      const currentSection = document.querySelector('#RandomMessageSection');
+      if (newSection && currentSection) {
+        currentSection.replaceWith(newSection);
+        console.log('✨ Random message updated!');
+      }
+    } catch (err) {
+      console.error('Error reloading message:', err);
     }
   }
 
   async function fetchCart() {
     const res = await fetch('/cart.js');
+    if (!res.ok) throw new Error('Failed to fetch cart');
     return res.json();
   }
 
@@ -36,16 +39,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: variantId, quantity: 1 })
       });
-     
-      if (res.status === 200) {
-        window.location.reload();
-        await reloadRandomMessage()
+
+      if (res.ok) {
+        console.log('🎁 Gift added successfully!');
+        await reloadRandomMessage();
       }
     }
   }
 
-  const cart = await fetchCart();
-  updateGift(cart);
+  try {
+    const cart = await fetchCart();
+    await updateGift(cart);
+  } catch (err) {
+    console.error('Cart update error:', err);
+  }
 });
-
-
