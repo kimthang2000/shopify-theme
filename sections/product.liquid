@@ -20,7 +20,7 @@
 <div class="product-form">
   {% form 'product', product %}
 
-    {{ product }}
+    <h2>{{ product }}</h2>
 
     {% assign current_variant = product.selected_or_first_available_variant %}
 
