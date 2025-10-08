@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function getVariantIdFromHandle(handle) {
     const res = await fetch(`/products/${handle}.js`);
     const product = await res.json();
+    console.log('product', product);
     return product.variants[0].id; // lấy variant đầu tiên
   }
 });
