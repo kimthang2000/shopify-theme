@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function updateGift(cart) {
     const subtotal = cart.items_subtotal_price / 100;
-
-    const a = await getVariantIdFromHandle(productId)
     // if (subtotal >= threshold) {
     //   await fetch('/cart/add.js', {
     //     method: 'POST',
@@ -34,14 +32,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const cart = await fetchCart();
   updateGift(cart);
-
-  async function getVariantIdFromHandle(handle) {
-    const res = await fetch(`/products/${handle}.js`);
-    console.log('res', res)
-    // const product = await res.json();
-    console.log('product', product);
-    return product.variants[0].id; // lấy variant đầu tiên
-  }
 });
 
 
