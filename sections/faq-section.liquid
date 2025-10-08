@@ -40,12 +40,13 @@
   </div>
 </section>
 
-<!-- Optional: debug -->
-<script>
+{% comment %} <script>
   {% if section.settings %}
     console.log('Section settings:', {{ section.blocks | json }});
   {% endif %}
-</script>
+</script> {% endcomment %}
+
+
 {% schema %}
 {
   "name": "FAQ Section",
