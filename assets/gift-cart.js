@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
   const productId = window.theme.settings.id;
 
-  if (!threshold || !giftProductId) return;
+  if (!threshold || !productId) return;
 
   async function fetchCart() {
     const res = await fetch('/cart.js');
