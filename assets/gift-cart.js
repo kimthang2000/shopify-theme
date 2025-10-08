@@ -1,32 +1,47 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const threshold = window.theme.settings.cart_threshold_amount;
-  const productId = window.theme.settings.id;
+  let addToCartForm = document.querySelector('form[action$="/cart/add"]');
+  let formData = new FormData(addToCartForm);
 
-  if (!threshold || !productId) return;
+  fetch(window.Shopify.routes.root + 'cart/add.js', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 
-  async function fetchCart() {
-    const res = await fetch('/cart.js');
-    return res.json();
-  }
 
-  async function updateGift(cart) {
-    const subtotal = cart.items_subtotal_price / 100;
+  // const threshold = window.theme.settings.cart_threshold_amount;
+  // const productId = window.theme.settings.id;
 
-    if (subtotal >= threshold) {
-      await fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: productId, quantity: 1 })
-      });
-      triggerMessageReload();
-    }
-  }
+  // if (!threshold || !productId) return;
 
-  function triggerMessageReload() {
-    document.dispatchEvent(new CustomEvent('gift-updated'));
-  }
+  // async function fetchCart() {
+  //   const res = await fetch('/cart.js');
+  //   return res.json();
+  // }
 
-  const cart = await fetchCart();
-  updateGift(cart);
+  // async function updateGift(cart) {
+  //   const subtotal = cart.items_subtotal_price / 100;
+
+  //   if (subtotal >= threshold) {
+  //     await fetch('/cart/add.js', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ id: productId, quantity: 1 })
+  //     });
+  //     triggerMessageReload();
+  //   }
+  // }
+
+  // function triggerMessageReload() {
+  //   document.dispatchEvent(new CustomEvent('gift-updated'));
+  // }
+
+  // const cart = await fetchCart();
+  // updateGift(cart);
 });
