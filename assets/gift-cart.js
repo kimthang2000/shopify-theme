@@ -1,11 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
-  const productId = window.theme.settings.id;
+  const variant = window.theme.settings.id;
 
-  if (!threshold || !productId) return;
+  if (!threshold || !variant) return;
 
-  console.log("productId", productId)
+  console.log("productId", variant)
 
   // return;
 
@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function updateGift(cart) {
     const subtotal = cart.items_subtotal_price / 100;
-    // if (subtotal >= threshold) {
-    //   await fetch('/cart/add.js', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ id: productId, quantity: 1 })
-    //   });
-    //   triggerMessageReload();
-    // }
+    if (subtotal >= threshold) {
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: variant, quantity: 1 })
+      });
+      triggerMessageReload();
+    }
   }
 
   function triggerMessageReload() {
