@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   console.log("productId", productId)
 
-  return;
+  // return;
 
   async function fetchCart() {
     const res = await fetch('/cart.js');
