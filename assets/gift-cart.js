@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!threshold || !variantId) return;
 
-
   async function fetchCart() {
     const res = await fetch('/cart.js');
     return res.json();
