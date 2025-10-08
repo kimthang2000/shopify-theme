@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('🎁 Gift added successfully!');
         // await reloadRandomMessage();
         window.location.reload();
+        showRandomMessage();
       }
     }
   }
