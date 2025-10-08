@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   let addToCartForm = document.querySelector('form[action$="/cart/add"]');
     console.log("addToCartForm", addToCartForm)
-  let formData = new FormData(addToCartForm);
+  // let formData = new FormData(addToCartForm);e
 
 
   console.log("formData", formData)
