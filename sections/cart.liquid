@@ -9,9 +9,11 @@
 
 <form action="{{ routes.cart_url }}" method="post">
   <table>
-    <script>
+
+    {% comment %} <script>
       console.log({{ cart.items | json }});
-    </script>
+    </script> {% endcomment %}
+
     {% for item in cart.items %}
       <tr>
         <td>
