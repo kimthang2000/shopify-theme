@@ -1,6 +1,20 @@
-{% assign messages = "You're awesome!|A gift just for you!|Enjoy your freebie!|Lucky day!|Bonus unlocked!" | split: "|" %}
-{% assign random_index = 'now' | date: '%s' | modulo: messages.size %}
+<section id="random-message-section">
+  {% assign messages = section.settings.messages %}
+  <p id="random-message">
+    {{ messages  }}
+  </p>
+</section>
 
-<div id="RandomMessageSection" class="text-center my-4 p-4 bg-gray-50 rounded-lg">
-  <p class="text-lg font-semibold">{{ messages[random_index] }}</p>
-</div>
+{% schema %}
+{
+  "name": "Random Message Section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "messages",
+      "label": "Messages (one per line)",
+      "default": "Congrats!\nYou got a gift!\nEnjoy your shopping!"
+    }
+  ]
+}
+{% endschema %}
