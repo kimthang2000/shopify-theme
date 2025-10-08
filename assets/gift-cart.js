@@ -5,6 +5,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!threshold || !variantId) return;
 
+  async function reloadRandomMessage() {
+    const res = await fetch(window.location.pathname + '?section_id=random-message');
+    const html = await res.text();
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+
+    const newSection = tempDiv.querySelector('#RandomMessageSection');
+    const currentSection = document.querySelector('#RandomMessageSection');
+
+    if (newSection && currentSection) {
+      currentSection.replaceWith(newSection);
+      console.log('✨ Random message updated!');
+    }
+  }
+
+
   async function fetchCart() {
     const res = await fetch('/cart.js');
     return res.json();
