@@ -86,7 +86,7 @@
       {
         "type": "number",
         "id": "cart_threshold_amount",
-        "label": "Card Threshold Amount",
+        "label": "Cart Threshold Amount",
         "default": 100
       },
       {
