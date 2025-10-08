@@ -1,27 +1,25 @@
+const messages = [
+  "Congrats!",
+  "You got a gift!",
+  "Enjoy your shopping!"
+];
+
 document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
   const variantId = window.theme.settings.id;
+
   if (!threshold || !variantId) return;
 
-  // async function reloadRandomMessage() {
-  //   try {
-  //     const res = await fetch(window.location.pathname + '?section_id=random-message');
-  //     if (!res.ok) return;
-  //     const html = await res.text();
+  function showRandomMessage() {
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    const section = document.getElementById('random-message-section');
+    const p = document.getElementById('random-message');
 
-  //     const tempDiv = document.createElement('div');
-  //     tempDiv.innerHTML = html;
-
-  //     const newSection = tempDiv.querySelector('#RandomMessageSection');
-  //     const currentSection = document.querySelector('#RandomMessageSection');
-  //     if (newSection && currentSection) {
-  //       currentSection.replaceWith(newSection);
-  //       console.log('✨ Random message updated!');
-  //     }
-  //   } catch (err) {
-  //     console.error('Error reloading message:', err);
-  //   }
-  // }
+    if (section && p) {
+      p.textContent = msg;
+      section.style.display = 'block'; // show section
+    }
+  }
 
   async function fetchCart() {
     const res = await fetch('/cart.js');
