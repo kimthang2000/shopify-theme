@@ -19,9 +19,9 @@
 
 <div class="product-form">
   {% form 'product', product %}
-
-    <h2>{{ product }}</h2>
-
+    <script>
+      console.log({{ product | json }});
+    </script>
     {% assign current_variant = product.selected_or_first_available_variant %}
 
     {% assign enable_custom_field = product.metafields.custom.enable_custom_field %}
@@ -60,3 +60,4 @@
   }
 }
 {% endschema %}
+
