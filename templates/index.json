@@ -45,11 +45,27 @@
     "main": {
       "type": "hello-world",
       "settings": {}
+    },
+    "1760600702edebbafe": {
+      "type": "apps",
+      "blocks": {
+        "powr_form_builder_app_block_za7YKH": {
+          "type": "shopify://apps/powr-form-builder/blocks/app-block/1412fe37-d89c-4706-a797-6e2b53cb4a69",
+          "settings": {
+            "app_id": "05a6fc2b_1760599449"
+          }
+        }
+      },
+      "block_order": [
+        "powr_form_builder_app_block_za7YKH"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "faq_section_PKhDJq",
     "1760588282cb3675b9",
-    "main"
+    "main",
+    "1760600702edebbafe"
   ]
 }
