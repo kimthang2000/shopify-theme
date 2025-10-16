@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     return res.json();
   }
 
-  // Hàm thêm sản phẩm vào cart
   async function addGiftToCart(variantId) {
     await fetch('/cart/add.js', {
       method: 'POST',
