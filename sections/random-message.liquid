@@ -1,16 +1,14 @@
 <div id="random-message-section">
-  {% if cart.item_count > 0 %}
-    {% if section.blocks.size > 0 %}
-      {% assign random_index = 'now' | date: '%N' | modulo: section.blocks.size %}
-      {% for block in section.blocks offset: random_index limit: 1 %}
-        <p id="random-message">{{ block.settings.text }}</p>
-      {% endfor %}
-      <p>DEBUG: Found {{ random_index }}</p>
-    {% else %}
-      <p id="random-message">Add some messages in theme editor</p>
-    {% endif %}
+  {% if section.blocks.size > 0 %}
+    {% assign random_index = 'now' | date: '%N' | modulo: section.blocks.size %}
+    <p>DEBUG: Found {{ random_index }}</p>
+    
+    {% for block in section.blocks offset: random_index limit: 1 %}
+      <p id="random-message">{{ block.settings.text }}</p>
+    {% endfor %}
+
   {% else %}
-    <p id="random-message"></p>
+    <p id="random-message">Add some messages in theme editor</p>
   {% endif %}
 </div>
 
