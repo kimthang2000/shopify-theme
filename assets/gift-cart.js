@@ -33,24 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (subtotal >= threshold && !hasGift) {
       await addGiftToCart(variantId);
       // await reloadRandomMessage(); // cập nhật message
-      await updateCartUI();        // cập nhật UI (nếu có drawer)
     }
-
-      await updateCartUI();
   }
 
-  // Cập nhật UI sau mỗi lần thay đổi cart
-  async function updateCartUI() {
-    const html = await fetch('/?section_id=cart-drawer').then(r => r.text());
-    const newCart = new DOMParser()
-      .parseFromString(html, 'text/html')
-      .querySelector('#CartDrawer');
-    const oldCart = document.querySelector('#CartDrawer');
-    if (oldCart && newCart) oldCart.replaceWith(newCart);
-  }
-
-  // Lắng nghe event add-to-cart (tùy theme)
-  document.addEventListener('cart:updated', checkAndAddGift);
   await checkAndAddGift();
 });
 
