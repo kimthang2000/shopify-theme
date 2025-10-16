@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hasGift = cart.items.some(item => item.id === variantId);
 
     if (subtotal >= threshold && !hasGift) {
+      console.log('1');
       await addGiftToCart(variantId);
       await reloadRandomMessage();
     }
