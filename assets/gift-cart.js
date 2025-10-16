@@ -1,9 +1,3 @@
-const messages = [
-  "Congrats!",
-  "You got a gift!",
-  "Enjoy your shopping!"
-];
-
 document.addEventListener('DOMContentLoaded', async () => {
   const threshold = window.theme.settings.cart_threshold_amount;
   const variantId = window.theme.settings.id;
