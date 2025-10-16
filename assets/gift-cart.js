@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const variantId = window.theme.settings.id;
 
   if (!threshold || !variantId) return;
-  
+
   async function getCart() {
     const res = await fetch('/cart.js');
     return res.json();
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  async function updateGift() {
+  async function checkAndAddGift() {
     const cart = await getCart();
 
     const subtotal = cart.items_subtotal_price / 100;
