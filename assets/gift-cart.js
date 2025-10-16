@@ -9,24 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const variantId = window.theme.settings.id;
 
   if (!threshold || !variantId) return;
-
-  function showRandomMessage() {
-    const msg = messages[Math.floor(Math.random() * messages.length)];
-    const section = document.getElementById('random-message-section');
-    const p = document.getElementById('random-message');
-
-    if (section && p) {
-      p.textContent = msg;
-      section.style.display = 'block'; // show section
-    }
-  }
-
-  async function fetchCart() {
-    const res = await fetch('/cart.js');
-    if (!res.ok) throw new Error('Failed to fetch cart');
-    return res.json();
-  }
-
+  
   async function getCart() {
     const res = await fetch('/cart.js');
     return res.json();
