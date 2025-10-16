@@ -1,3 +1,17 @@
-<section id="random-message-section" style="display:none;">
-  <p id="random-message"></p>
-</section>
+<div id="random-message" data-url="{{ routes.cart_url }}">
+  <p>{{ section.settings.messages | split: ',' | sample }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Random Message",
+  "settings": [
+    {
+      "type": "text",
+      "id": "messages",
+      "label": "Messages (comma separated)",
+      "default": "Great choice!,Your cart looks awesome!,Almost there for a free gift!"
+    }
+  ]
+}
+{% endschema %}
