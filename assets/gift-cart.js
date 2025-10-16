@@ -16,19 +16,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   async function reloadRandomMessage() {
-    const sectionUrl = `/?section_id=random-message&ts=${Date.now()}`;
-    const html = await fetch(sectionUrl).then(r => r.text());
+    try {
+      const url = `/?section_id=random-message&ts=${Date.now()}`;
+      const html = await fetch(url).then(r => r.text());
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const newSection = doc.querySelector('#random-message-section');
-    const oldSection = document.querySelector('#random-message-section');
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newSection = doc.querySelector('#random-message-section');
+      const oldSection = document.querySelector('#random-message-section');
 
-    if (oldSection && newSection) {
-      oldSection.replaceWith(newSection);
-      showRandomMessage();
+      if (oldSection && newSection) {
+        oldSection.replaceWith(newSection);
+        console.log('Random message updated!');
+      }
+    } catch (e) {
+      console.error('Error reloading message:', e);
     }
   }
+
 
   async function getCart() {
     const res = await fetch('/cart.js');
