@@ -4,22 +4,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!threshold || !variantId) return;
 
+  function showRandomMessage() {
+    const msgEl = document.querySelector('#random-message');
+    if (!msgEl) return;
+
+    const messages = msgEl.dataset.messages.split(',');
+    const random = messages[Math.floor(Math.random() * messages.length)].trim();
+
+    msgEl.textContent = random;
+    console.log('💬 Random message shown:', random);
+  }
+
+  // Hàm reload section qua AJAX
   async function reloadRandomMessage() {
-    const sectionUrl = '/?section_id=random-message';
+    const sectionUrl = `/?section_id=random-message&ts=${Date.now()}`; // thêm timestamp tránh cache
     const html = await fetch(sectionUrl).then(r => r.text());
-    console.log('html', html);
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const newSection = doc.querySelector('#random-message-section');
     const oldSection = document.querySelector('#random-message-section');
-    console.log('text', newSection, oldSection, doc);
 
     if (oldSection && newSection) {
       oldSection.replaceWith(newSection);
+      showRandomMessage(); // Random lại sau khi reload
     }
   }
-
 
   async function getCart() {
     const res = await fetch('/cart.js');
