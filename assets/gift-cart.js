@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (subtotal >= threshold && !hasGift) {
       await addGiftToCart(variantId);
-      // await reloadRandomMessage(); // cập nhật message
+      await reloadRandomMessage(); // cập nhật message
     }
   }
 
