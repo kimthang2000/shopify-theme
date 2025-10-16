@@ -13,6 +13,40 @@
     {{ content_for_header }}
   </head>
 
+  <script>
+    window.Shopify.loadFeatures(
+      [
+        {
+          name: 'consent-tracking-api',
+          version: '0.1',
+        },
+      ],
+      (error) => {
+        if (error) {
+          console.error('Error loading Customer Privacy API:', error);
+          return;
+        }
+
+        const privacy = window.Shopify.customerPrivacy;
+
+        if (!privacy) {
+          console.warn('Customer Privacy API not available');
+          return;
+        }
+
+        privacy.getRegion().then((region) => {
+          console.log('User region:', region);
+
+          if (region && region.toLowerCase() === 'us-or') {
+            alert('Hi Oregon user! 🌲 You’re seeing a region-based popup.');
+          }
+        }).catch((err) => {
+          console.error('Failed to get region:', err);
+        });
+      }
+    );
+  </script>
+
   <body>
     {% sections 'header-group' %}
 
