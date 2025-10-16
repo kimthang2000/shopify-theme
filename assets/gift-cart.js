@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function reloadRandomMessage() {
     const sectionUrl = '/?section_id=random-message';
     const html = await fetch(sectionUrl).then(r => r.text());
+    console.log('html', html);
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const newSection = doc.querySelector('#random-message-section');
     const oldSection = document.querySelector('#random-message-section');
+    console.log('text', html);
 
     if (oldSection && newSection) {
       oldSection.replaceWith(newSection);
