@@ -27,31 +27,56 @@ document.addEventListener('DOMContentLoaded', async () => {
     return res.json();
   }
 
-  async function updateGift(cart) {
-    const subtotal = cart.items_subtotal_price / 100;
-    const hasGift = cart.items.some(item => item.id === variantId);
+  async function getCart() {
+    const res = await fetch('/cart.js');
+    return res.json();
+  }
 
-    if (subtotal >= threshold && !hasGift) {
-      const res = await fetch('/cart/add.js', {
+  // Hàm thêm sản phẩm vào cart
+  async function addGiftToCart(variantId) {
+    await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+    });
+  }
+
+  async function checkAndAddGift() {
+    const cart = await getCart();
+    const total = cart.total_price / 100;
+    const hasGift = cart.items.some(item => item.handle === giftHandle);
+
+    if (total >= threshold && !hasGift) {
+      console.log('🎁 Adding free gift...');
+      await addGiftToCart(giftVariantId);
+      await reloadRandomMessage(); // cập nhật message
+      await updateCartUI();        // cập nhật UI (nếu có drawer)
+    } else if (total < threshold && hasGift) {
+      console.log('🗑️ Removing free gift...');
+      const giftItem = cart.items.find(i => i.handle === giftHandle);
+      await fetch(`/cart/change.js`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: variantId, quantity: 1 })
+        body: JSON.stringify({ id: giftItem.key, quantity: 0 })
       });
-
-      if (res.ok) {
-        console.log('🎁 Gift added successfully!');
-        // window.location.reload();
-        showRandomMessage();
-      }
+      await reloadRandomMessage();
+      await updateCartUI();
     }
   }
 
-  try {
-    const cart = await fetchCart();
-    await updateGift(cart);
-  } catch (err) {
-    console.error('Cart update error:', err);
+  // Cập nhật UI sau mỗi lần thay đổi cart
+  async function updateCartUI() {
+    const html = await fetch('/?section_id=cart-drawer').then(r => r.text());
+    const newCart = new DOMParser()
+      .parseFromString(html, 'text/html')
+      .querySelector('#CartDrawer');
+    const oldCart = document.querySelector('#CartDrawer');
+    if (oldCart && newCart) oldCart.replaceWith(newCart);
   }
+
+  // Lắng nghe event add-to-cart (tùy theme)
+  document.addEventListener('cart:updated', checkAndAddGift);
+  await checkAndAddGift();
 });
 
 
