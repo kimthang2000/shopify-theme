@@ -1,7 +1,6 @@
 <div id="random-message-section">
-  <p id="random-message">
-    {% assign messages = section.settings.messages | split: ',' %}
-    {{ messages | sample }}
+  <p id="random-message" data-messages="{{ section.settings.messages | escape }}">
+    {{ section.settings.messages | split: ',' | first }}
   </p>
 </div>
 
