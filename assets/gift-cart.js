@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function reloadRandomMessage() {
     try {
       const url = `/?section_id=random-message&ts=${Date.now()}`;
+
+      console.log("url", url)
       const html = await fetch(url).then(r => r.text());
 
       const parser = new DOMParser();
