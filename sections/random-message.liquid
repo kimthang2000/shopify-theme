@@ -1,6 +1,6 @@
 <div id="random-message-section">
   {% if section.blocks.size > 0 %}
-    {% assign random_index = 'now' | date: '%N' | modulo: section.blocks.size %}
+    {% assign random_index = 'now' | date: '%s' | modulo: section.blocks.size %}
     <p id="random-message">{{ section.blocks[random_index].settings.text }}</p>
   {% else %}
     <p id="random-message">Add some messages in theme editor</p>
