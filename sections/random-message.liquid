@@ -1,6 +1,8 @@
-<div id="random-message">
-  {% assign messages = section.settings.messages | split: ',' %}
-  <p>{{ messages | sample }}</p>
+<div id="random-message-section">
+  <p id="random-message">
+    {% assign messages = section.settings.messages | split: ',' %}
+    {{ messages | sample }}
+  </p>
 </div>
 
 {% schema %}
@@ -11,7 +13,7 @@
       "type": "text",
       "id": "messages",
       "label": "Messages (comma-separated)",
-      "default": "Great choice!,Almost there for a free gift!,Your cart looks awesome!,Keep shopping for surprises!"
+      "default": "Congrats!,You got a gift!,Enjoy your shopping!"
     }
   ]
 }
