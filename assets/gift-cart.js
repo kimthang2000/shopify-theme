@@ -15,9 +15,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('💬 Random message shown:', random);
   }
 
-  // Hàm reload section qua AJAX
   async function reloadRandomMessage() {
-    const sectionUrl = `/?section_id=random-message&ts=${Date.now()}`; // thêm timestamp tránh cache
+    const sectionUrl = `/?section_id=random-message&ts=${Date.now()}`;
     const html = await fetch(sectionUrl).then(r => r.text());
 
     const parser = new DOMParser();
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (oldSection && newSection) {
       oldSection.replaceWith(newSection);
-      showRandomMessage(); // Random lại sau khi reload
+      showRandomMessage();
     }
   }
 
