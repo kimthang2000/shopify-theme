@@ -32,6 +32,9 @@
         if (!privacy) {
           console.error('Customer Privacy API not available');
         }
+
+        const region = privacy.getRegion();
+        console.log('region');
       }
     );
   </script>
