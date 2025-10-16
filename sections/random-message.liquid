@@ -1,5 +1,5 @@
 <div id="random-message-section">
-  {% if section.blocks.size > 0 %}
+  {% if section.blocks.size > 0 and cart.item_count > 0 %}
     {% assign random_index = 'now' | date: '%s' | modulo: section.blocks.size %}
     <p id="random-message">{{ section.blocks[random_index].settings.text }}</p>
   {% else %}
