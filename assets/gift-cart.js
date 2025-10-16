@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  async function updateGift(cart) {
+  async function updateGift() {
+    const cart = await getCart();
+
     const subtotal = cart.items_subtotal_price / 100;
     const hasGift = cart.items.some(item => item.id === variantId);
 
