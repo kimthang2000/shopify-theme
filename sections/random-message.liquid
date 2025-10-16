@@ -1,18 +1,33 @@
 <div id="random-message-section">
-  <p id="random-message" data-messages="{{ section.settings.messages | escape }}">
-    {{ section.settings.messages | split: ',' | first }}
-  </p>
+  {% if section.blocks.size > 0 %}
+    {% assign random_block = section.blocks | sample %}
+    <p id="random-message">{{ random_block.settings.text }}</p>
+  {% else %}
+    <p id="random-message">Add some messages in theme editor</p>
+  {% endif %}
 </div>
 
 {% schema %}
 {
-  "name": "Random Message",
-  "settings": [
+  "name": "Random Message Section",
+  "settings": [],
+  "blocks": [
     {
-      "type": "text",
-      "id": "messages",
-      "label": "Messages (comma-separated)",
-      "default": "Congrats!,You got a gift!,Enjoy your shopping!"
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Random Message Section"
     }
   ]
 }
