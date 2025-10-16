@@ -2,7 +2,7 @@
   {% if section.blocks.size > 0 %}
     {% assign random_index = 'now' | date: '%s' | modulo: section.blocks.size %}
     {% for block in section.blocks offset: random_index limit: 1 %}
-      <p id="random-message">{{ random_block.settings.text }}</p>
+      <p id="random-message">{{ block.settings.text }}</p>
     {% endfor %}
 
   {% else %}
