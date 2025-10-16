@@ -15,6 +15,31 @@
     },
     "random-message": {
       "type": "random-message",
+      "blocks": {
+        "message_icXbN4": {
+          "type": "message",
+          "settings": {
+            "text": "message text 3"
+          }
+        },
+        "message_9HE4it": {
+          "type": "message",
+          "settings": {
+            "text": "message text 2"
+          }
+        },
+        "message_nwYUGn": {
+          "type": "message",
+          "settings": {
+            "text": "message text 1"
+          }
+        }
+      },
+      "block_order": [
+        "message_icXbN4",
+        "message_9HE4it",
+        "message_nwYUGn"
+      ],
       "settings": {}
     }
   },

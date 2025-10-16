@@ -38,6 +38,10 @@
         "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
       }
     },
+    "1760588282cb3675b9": {
+      "type": "apps",
+      "settings": {}
+    },
     "main": {
       "type": "hello-world",
       "settings": {}
@@ -45,6 +49,7 @@
   },
   "order": [
     "faq_section_PKhDJq",
+    "1760588282cb3675b9",
     "main"
   ]
 }
