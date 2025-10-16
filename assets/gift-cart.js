@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const doc = parser.parseFromString(html, 'text/html');
       const newSection = doc.querySelector('#random-message-section');
       const oldSection = document.querySelector('#random-message-section');
-
+      console.log('test', newSection, oldSection);
       if (oldSection && newSection) {
         oldSection.replaceWith(newSection);
         console.log('Random message updated!');
