@@ -16,7 +16,8 @@
           "type": "faq_item",
           "repeater": "{{ product.metafields.custom.faq_list.value }}",
           "settings": {
-            "question": "{{ block.repeater.question.value }}"
+            "question": "{{ block.repeater.question.value }}",
+            "answer": "Tra loi"
           }
         }
       },
@@ -32,10 +33,34 @@
     "main": {
       "type": "product",
       "settings": {}
+    },
+    "random_message_yc9qkY": {
+      "type": "random-message",
+      "blocks": {
+        "message_yUc6At": {
+          "type": "message",
+          "settings": {
+            "text": "123"
+          }
+        },
+        "message_JLYrcn": {
+          "type": "message",
+          "settings": {
+            "text": "4566"
+          }
+        }
+      },
+      "block_order": [
+        "message_yUc6At",
+        "message_JLYrcn"
+      ],
+      "name": "Random Message Section",
+      "settings": {}
     }
   },
   "order": [
     "faq_section_PRTq68",
-    "main"
+    "main",
+    "random_message_yc9qkY"
   ]
 }
