@@ -28,7 +28,10 @@
         }
 
         const privacy = window.Shopify.customerPrivacy;
-        console.log('privacy', privacy)
+        
+        if (!privacy) {
+          console.error('Customer Privacy API not available');
+        }
       }
     );
   </script>
