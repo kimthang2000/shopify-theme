@@ -12,9 +12,25 @@
     "main": {
       "type": "page",
       "settings": {}
+    },
+    "17606010902ac460c2": {
+      "type": "apps",
+      "blocks": {
+        "powr_form_builder_app_block_D77qEV": {
+          "type": "shopify://apps/powr-form-builder/blocks/app-block/1412fe37-d89c-4706-a797-6e2b53cb4a69",
+          "settings": {
+            "app_id": "05a6fc2b_1760599449"
+          }
+        }
+      },
+      "block_order": [
+        "powr_form_builder_app_block_D77qEV"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "17606010902ac460c2"
   ]
 }
