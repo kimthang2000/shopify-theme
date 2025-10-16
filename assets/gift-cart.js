@@ -21,10 +21,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  async function fetchCart() {
+  async function getCart() {
     const res = await fetch('/cart.js');
-    if (!res.ok) throw new Error('Failed to fetch cart');
     return res.json();
+  }
+
+  // Hàm thêm sản phẩm vào cart
+  async function addGiftToCart(variantId) {
+    await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+    });
   }
 
   async function updateGift(cart) {
@@ -44,13 +52,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         showRandomMessage();
       }
     }
-  }
-
-  try {
-    const cart = await fetchCart();
-    await updateGift(cart);
-  } catch (err) {
-    console.error('Cart update error:', err);
   }
 });
 
