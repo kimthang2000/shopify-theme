@@ -1,5 +1,6 @@
 <div id="random-message-section">
   {% if section.blocks.size > 0 %}
+     <p>DEBUG: Found {{ section.blocks.size }} blocks</p>
     {% assign random_block = section.blocks | sample %}
     <p id="random-message">{{ random_block.settings.text }}</p>
   {% else %}
