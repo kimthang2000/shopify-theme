@@ -48,18 +48,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hasGift = cart.items.some(item => item.id === variantId);
 
     if (subtotal >= threshold && !hasGift) {
-      const res = await fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: variantId, quantity: 1 })
-      });
-
-      if (res.ok) {
-        console.log('🎁 Gift added successfully!');
-        // window.location.reload();
-        showRandomMessage();
-      }
+      await addGiftToCart(giftVariantId);
+      await reloadRandomMessage(); // cập nhật message
+      await updateCartUI();        // cập nhật UI (nếu có drawer)
     }
+
+      await updateCartUI();
   }
 
   // Cập nhật UI sau mỗi lần thay đổi cart
