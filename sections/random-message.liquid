@@ -1,8 +1,10 @@
 <div id="random-message-section">
   {% if section.blocks.size > 0 %}
-     <p>DEBUG: Found {{ section.blocks.size }} blocks</p>
-    {% assign random_block = section.blocks | sample %}
-    <p id="random-message">{{ random_block.settings.text }}</p>
+    {% assign random_index = 'now' | date: '%s' | modulo: section.blocks.size %}
+    {% for block in section.blocks offset: random_index limit: 1 %}
+      <p id="random-message">{{ random_block.settings.text }}</p>
+    {% endfor %}
+
   {% else %}
     <p id="random-message">Add some messages in theme editor</p>
   {% endif %}
