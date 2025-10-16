@@ -1,5 +1,6 @@
-<div id="random-message" data-url="{{ routes.cart_url }}">
-  <p>{{ section.settings.messages | split: ',' | sample }}</p>
+<div id="random-message">
+  {% assign messages = section.settings.messages | split: ',' %}
+  <p>{{ messages | sample }}</p>
 </div>
 
 {% schema %}
@@ -9,8 +10,8 @@
     {
       "type": "text",
       "id": "messages",
-      "label": "Messages (comma separated)",
-      "default": "Great choice!,Your cart looks awesome!,Almost there for a free gift!"
+      "label": "Messages (comma-separated)",
+      "default": "Great choice!,Almost there for a free gift!,Your cart looks awesome!,Keep shopping for surprises!"
     }
   ]
 }
