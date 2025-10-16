@@ -9,17 +9,29 @@
  */
 {
   "sections": {
+    "faq_section_PRTq68": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_myKxi6": {
+          "type": "faq_item",
+          "repeater": "{{ product.metafields.custom.faq_list.value }}",
+          "settings": {
+            "question": "{{ block.repeater.question.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_myKxi6"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "{{ product.metafields.custom.faq_list | metafield_text: field: 'question' }}",
+        "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
+      }
+    },
     "main": {
       "type": "product",
       "settings": {}
-    },
-    "faq_section_PRTq68": {
-      "type": "faq-section",
-      "name": "FAQ Section",
-      "settings": {
-        "title": "Câu hỏi thường gặp",
-        "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
-      }
     }
   },
   "order": [
