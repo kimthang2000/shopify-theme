@@ -26,6 +26,9 @@
           console.error('Error loading Customer Privacy API:', error);
           return;
         }
+
+        const privacy = window.Shopify.customerPrivacy;
+        console.log('privacy', privacy)
       }
     );
   </script>
