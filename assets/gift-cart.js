@@ -4,6 +4,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!threshold || !variantId) return;
 
+  async function reloadRandomMessage() {
+    const sectionUrl = '/?section_id=random-message';
+    const html = await fetch(sectionUrl).then(r => r.text());
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const newSection = doc.querySelector('#random-message-section');
+    const oldSection = document.querySelector('#random-message-section');
+
+    if (oldSection && newSection) {
+      oldSection.replaceWith(newSection);
+    }
+  }
+
+
   async function getCart() {
     const res = await fetch('/cart.js');
     return res.json();
