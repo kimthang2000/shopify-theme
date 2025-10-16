@@ -41,26 +41,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  async function checkAndAddGift() {
-    const cart = await getCart();
-    const total = cart.total_price / 100;
-    const hasGift = cart.items.some(item => item.handle === giftHandle);
+  async function updateGift(cart) {
+    const subtotal = cart.items_subtotal_price / 100;
+    const hasGift = cart.items.some(item => item.id === variantId);
 
-    if (total >= threshold && !hasGift) {
-      console.log('🎁 Adding free gift...');
-      await addGiftToCart(giftVariantId);
-      await reloadRandomMessage(); // cập nhật message
-      await updateCartUI();        // cập nhật UI (nếu có drawer)
-    } else if (total < threshold && hasGift) {
-      console.log('🗑️ Removing free gift...');
-      const giftItem = cart.items.find(i => i.handle === giftHandle);
-      await fetch(`/cart/change.js`, {
+    if (subtotal >= threshold && !hasGift) {
+      const res = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: giftItem.key, quantity: 0 })
+        body: JSON.stringify({ id: variantId, quantity: 1 })
       });
-      await reloadRandomMessage();
-      await updateCartUI();
+
+      if (res.ok) {
+        console.log('🎁 Gift added successfully!');
+        // window.location.reload();
+        showRandomMessage();
+      }
     }
   }
 
