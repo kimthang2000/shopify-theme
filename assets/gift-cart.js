@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hasGift = cart.items.some(item => item.id === variantId);
 
     if (subtotal >= threshold && !hasGift) {
-      await addGiftToCart(giftVariantId);
+      await addGiftToCart(variantId);
       await reloadRandomMessage(); // cập nhật message
       await updateCartUI();        // cập nhật UI (nếu có drawer)
     }
