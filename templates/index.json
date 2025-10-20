@@ -19,6 +19,13 @@
             "answer": "cau tra loi 1"
           }
         },
+        "faq_item_cEBhBK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Cau hoi",
+            "answer": "Tra loi"
+          }
+        },
         "faq_item_wG73RM": {
           "type": "faq_item",
           "settings": {
@@ -29,6 +36,7 @@
       },
       "block_order": [
         "faq_item_khPTPG",
+        "faq_item_cEBhBK",
         "faq_item_wG73RM"
       ],
       "custom_css": [],
