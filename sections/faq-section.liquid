@@ -1,6 +1,6 @@
 <section class="faq-section">
   <!-- Header -->
-  <div class="faq-header">
+  {% comment %} <div class="faq-header">
     <h2>
       {% if template.name contains 'product' and product.metafields.custom.title %}
         {{ product.metafields.custom.title.value }}
@@ -15,7 +15,7 @@
         {{ section.settings.description }}
       {% endif %}
     </p>
-  </div>
+  </div> {% endcomment %}
 
   <!-- FAQ List -->
   <div class="faq-list">
