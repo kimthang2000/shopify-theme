@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     submitCheckout.disabled = true;
 
     IAgreecheckbox.addEventListener('change', function() {
+      IAgreecheckbox.value = !!submitCheckout.disabled;
       submitCheckout.disabled = !this.checked;
     });
   }
