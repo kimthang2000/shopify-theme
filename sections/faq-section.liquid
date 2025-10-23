@@ -3,10 +3,6 @@
   <div class="faq-list">
     {% assign faq_items = section.blocks %}
 
-    {% if template.name contains 'product' and product.metafields.custom.faq_list %}
-      {% assign faq_items = product.metafields.custom.faq_list.value %}
-    {% endif %}
-
     {% if faq_items %}
       {% for faq in faq_items %}
         <div class="faq-item">
