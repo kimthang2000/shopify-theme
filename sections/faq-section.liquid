@@ -1,22 +1,4 @@
 <section class="faq-section">
-  <!-- Header -->
-  {% comment %} <div class="faq-header">
-    <h2>
-      {% if template.name contains 'product' and product.metafields.custom.title %}
-        {{ product.metafields.custom.title.value }}
-      {% else %}
-        {{ section.settings.title }}
-      {% endif %}
-    </h2>
-    <p>
-      {% if template.name contains 'product' and product.metafields.custom.description %}
-        {{ product.metafields.custom.description.value }}
-      {% else %}
-        {{ section.settings.description }}
-      {% endif %}
-    </p>
-  </div> {% endcomment %}
-
   <!-- FAQ List -->
   <div class="faq-list">
     {% assign faq_items = section.blocks %}
