@@ -11,6 +11,18 @@
   "sections": {
     "faq_section_PRTq68": {
       "type": "faq-section",
+      "blocks": {
+        "faq_item_iBcbc7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Cau hoi",
+            "answer": "Tra loi"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_iBcbc7"
+      ],
       "name": "FAQ Section",
       "settings": {
         "title": "",
