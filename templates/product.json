@@ -16,7 +16,7 @@
           "type": "faq_item",
           "settings": {
             "question": "{{ product.metafields.custom.faq_list | metafield_text: field: 'question' }}",
-            "answer": "Tra loi"
+            "answer": "{{ product.metafields.custom.faq_list | metafield_text: field: 'answer' }}"
           }
         }
       },
