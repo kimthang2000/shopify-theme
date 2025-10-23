@@ -14,9 +14,9 @@
       "blocks": {
         "faq_item_iBcbc7": {
           "type": "faq_item",
+          "repeater": "{{ product.metafields.custom.faq_list.value }}",
           "settings": {
-            "question": "{{ product.metafields.custom.faq_list | metafield_text: field: 'question' }}",
-            "answer": "Tra loi"
+            "question": "{{ block.repeater.question.value }}"
           }
         }
       },
