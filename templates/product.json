@@ -55,10 +55,27 @@
       ],
       "name": "Random Message Section",
       "settings": {}
+    },
+    "1761279213ac8459d8": {
+      "type": "apps",
+      "blocks": {
+        "training_app_star_rating_N37aWp": {
+          "type": "shopify://apps/training-app/blocks/star_rating/019a1095-c83f-7bff-8712-b41becff039e",
+          "settings": {
+            "product": "{{product}}",
+            "colour": "#ff0000"
+          }
+        }
+      },
+      "block_order": [
+        "training_app_star_rating_N37aWp"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "faq_section_PRTq68",
+    "1761279213ac8459d8",
     "main",
     "random_message_yc9qkY"
   ]
