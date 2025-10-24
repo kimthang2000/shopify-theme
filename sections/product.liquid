@@ -27,8 +27,8 @@
     {% assign enable_custom_field = product.metafields.custom.enable_custom_field %}
   
     {% if product.tags contains 'custom_field' and enable_custom_field %}
-      <label for="custom_input">Notes:</label>
-      <input type="text" name="properties[Notes]" id="custom_input" required>
+      <label for="custom_input">Note:</label>
+      <input type="text" name="properties[Note]" id="custom_input" required>
     {% endif %}
 
     <select name="id">
