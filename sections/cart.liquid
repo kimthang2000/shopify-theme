@@ -23,7 +23,7 @@
           <p>{{ item.product.title }}</p>
 
           {% if item.properties != blank %}
-              Custom Value: {{ item.properties['custom_input'] }}
+              Note: {{ item.properties['Note'] }}
           {% endif %}
 
           {{ 'cart.remove' | t | link_to: item.url_to_remove }}
