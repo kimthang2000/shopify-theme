@@ -56,26 +56,25 @@
       "name": "Random Message Section",
       "settings": {}
     },
-    "1761279213ac8459d8": {
+    "17618172158d18d64d": {
       "type": "apps",
       "blocks": {
-        "training_app_star_rating_N37aWp": {
-          "type": "shopify://apps/training-app/blocks/star_rating/019a1095-c83f-7bff-8712-b41becff039e",
+        "training_app_product_recipe_daqVRH": {
+          "type": "shopify://apps/training-app/blocks/product_recipe/019a3477-00ba-71bc-852f-d8543570227b",
           "settings": {
-            "product": "{{product}}",
-            "colour": "#ff0000"
+            "title": "Product Info"
           }
         }
       },
       "block_order": [
-        "training_app_star_rating_N37aWp"
+        "training_app_product_recipe_daqVRH"
       ],
       "settings": {}
     }
   },
   "order": [
+    "17618172158d18d64d",
     "faq_section_PRTq68",
-    "1761279213ac8459d8",
     "main",
     "random_message_yc9qkY"
   ]

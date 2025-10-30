@@ -43,8 +43,12 @@
       "name": "FAQ Section",
       "settings": {
         "title": "Câu hỏi thường gặp",
-        "description": "Những câu hỏi phổ biến từ khách hàng của chúng tôi."
+        "description": "<p>Những câu hỏi phổ biến từ khách hàng của chúng tôi.</p>"
       }
+    },
+    "1761817193f7edc244": {
+      "type": "apps",
+      "settings": {}
     },
     "1760588282cb3675b9": {
       "type": "apps",
@@ -72,6 +76,7 @@
   },
   "order": [
     "faq_section_PKhDJq",
+    "1761817193f7edc244",
     "1760588282cb3675b9",
     "main",
     "1760600702edebbafe"
