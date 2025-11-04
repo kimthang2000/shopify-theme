@@ -12,13 +12,13 @@
     "gift_product": "the-compare-at-price-snowboard",
     "content_for_index": [],
     "blocks": {
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+      "13375078075628245689": {
+        "type": "shopify://apps/powr-form-builder/blocks/app-embed/1412fe37-d89c-4706-a797-6e2b53cb4a69",
         "disabled": false,
         "settings": {}
       },
-      "13375078075628245689": {
-        "type": "shopify://apps/powr-form-builder/blocks/app-embed/1412fe37-d89c-4706-a797-6e2b53cb4a69",
+      "11735689235857492391": {
+        "type": "shopify://apps/algolia-ai-search-discovery/blocks/autocomplete/57bb7f86-d5fe-4d43-96ca-3953324494cf",
         "disabled": false,
         "settings": {}
       }
