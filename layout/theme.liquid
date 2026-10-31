@@ -54,8 +54,20 @@
   window.theme = {
     settings: {
       cart_threshold_amount: {{ settings.cart_threshold_amount | default: 0 }},
-      id : {{ settings.gift_product.selected_or_first_available_variant.id || default: 0 }}
+      id : {{ settings.gift_product.selected_or_first_available_variant.id | default: 0 }}
     }
   };
 </script>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ settings.gift_product.selected_or_first_available_variant.id || default:
+    0 }}"
+  to: "{{ settings.gift_product.selected_or_first_available_variant.id | default:
+    0 }}"
+  position: 1284..1363
+{% endcomment %}
